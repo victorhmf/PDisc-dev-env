@@ -2,9 +2,9 @@ version: '3'
 services:
   database.pdisc.local:
     container_name: pdisc-database
-    image: wangxian/alpine-mysql
+    image: mysql:5.7
     volumes:
-      - ./data/database:/var/lib/mysql
+      - mysql_volumes:/var/lib/mysql
     ports:
       - "3306:3306"
     env_file:
@@ -13,12 +13,18 @@ services:
   api.pdisc.local:
     container_name: pdisc-api
     build:
-     context: ./apps/api
+     context: .
+     dockerfile: ./apps/api/Dockerfile
     volumes:
       - ./apps/api:/app
+      - /app/node_modules
     ports:
       - "3000:3000"
     env_file:
       - ./config/api.env
-    links:
+    command: sh -c '/scripts/wait-for.sh database.pdisc.local:3306 -- yarn start'
+    depends_on:
       - database.pdisc.local
+
+volumes: 
+  mysql_volumes: {}
