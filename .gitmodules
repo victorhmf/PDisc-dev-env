@@ -1,3 +1,6 @@
 [submodule "apps/api"]
 	path = apps/api
 	url = git@github.com:victorhmf/PDisc-api.git
+[submodule "apps/client"]
+	path = apps/client
+	url = git@github.com:victorhmf/PDisc-client.git
