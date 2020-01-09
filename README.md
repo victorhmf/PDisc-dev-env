@@ -17,7 +17,7 @@ Siga os passos a seguir para configurar o ambiente do PDisc em sua máquina:
 ### 1. Clone este repositório
 
 ```shell
-git clone git@github.com:victorhmf/PDisc-dev-env.git
+git clone https://github.com/victorhmf/PDisc-dev-env.git
 ```
 
 ### 2. Inicialize os submódulos
@@ -27,7 +27,7 @@ git submodule init
 git submodule update --remote
 ```
 
-### 3. Construa os contêiners
+### 3. Construa as imagens e os contêiners
 
 ```shell
 docker-compose up --build
